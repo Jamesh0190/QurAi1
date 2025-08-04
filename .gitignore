@@ -1,0 +1,8 @@
+# Netlify
+.netlify
+
+# Mac
+.DS_Store
+
+# Node modules (if you add any later)
+node_modules/
