@@ -19,7 +19,7 @@
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
         }
         
         .glass-effect {
@@ -33,7 +33,7 @@
         }
         
         .verse-hover:hover {
-            background-color: rgba(102, 126, 234, 0.1);
+            background-color: rgba(16, 185, 129, 0.1);
             transform: translateX(4px);
             transition: all 0.3s ease;
         }
@@ -83,15 +83,15 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-book-quran text-3xl text-purple-600"></i>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">AiQuran</span>
+                    <i class="fas fa-book-quran text-3xl text-green-600"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">AiQuran</span>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-purple-600 transition">Home</a>
-                    <a href="#quran-reader" class="nav-link text-gray-700 hover:text-purple-600 transition">Quran Reader</a>
-                    <a href="#ai-assistant" class="nav-link text-gray-700 hover:text-purple-600 transition">AI Assistant</a>
-                    <a href="#search" class="nav-link text-gray-700 hover:text-purple-600 transition">Search</a>
+                    <a href="#home" class="nav-link text-gray-700 hover:text-green-600 transition">Home</a>
+                    <a href="#quran-reader" class="nav-link text-gray-700 hover:text-green-600 transition">Quran Reader</a>
+                    <a href="#ai-assistant" class="nav-link text-gray-700 hover:text-green-600 transition">AI Assistant</a>
+                    <a href="#search" class="nav-link text-gray-700 hover:text-green-600 transition">Search</a>
                     <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 transition">
                         <i class="fas fa-moon text-gray-700" id="theme-icon"></i>
                     </button>
@@ -106,17 +106,17 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <div class="px-4 py-2 space-y-2">
-                <a href="#home" class="block py-2 text-gray-700 hover:text-purple-600">Home</a>
-                <a href="#quran-reader" class="block py-2 text-gray-700 hover:text-purple-600">Quran Reader</a>
-                <a href="#ai-assistant" class="block py-2 text-gray-700 hover:text-purple-600">AI Assistant</a>
-                <a href="#search" class="block py-2 text-gray-700 hover:text-purple-600">Search</a>
+                <a href="#home" class="block py-2 text-gray-700 hover:text-green-600">Home</a>
+                <a href="#quran-reader" class="block py-2 text-gray-700 hover:text-green-600">Quran Reader</a>
+                <a href="#ai-assistant" class="block py-2 text-gray-700 hover:text-green-600">AI Assistant</a>
+                <a href="#search" class="block py-2 text-gray-700 hover:text-green-600">Search</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen gradient-bg flex items-center justify-center text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="absolute inset-0 bg-green-900 opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
@@ -126,7 +126,7 @@
                     Discover the divine wisdom with intelligent search, translations, and AI-powered insights
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('quran-reader')" class="bg-white text-purple-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                    <button onclick="scrollToSection('quran-reader')" class="bg-white text-green-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
                         Start Reading
                     </button>
                     <button onclick="scrollToSection('ai-assistant')" class="glass-effect text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:bg-opacity-20 transition transform hover:scale-105">
@@ -160,10 +160,10 @@
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-2xl font-semibold text-gray-800" id="surah-title">Al-Fatihah</h3>
                         <div class="flex gap-2">
-                            <button onclick="toggleTranslation()" class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition">
+                            <button onclick="toggleTranslation()" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition">
                                 <i class="fas fa-language mr-2"></i>Translation
                             </button>
-                            <button onclick="playAudio()" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition">
+                            <button onclick="playAudio()" class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition">
                                 <i class="fas fa-play mr-2"></i>Play
                             </button>
                         </div>
@@ -185,7 +185,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="bg-gray-50 rounded-lg shadow-lg p-6 mb-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white mr-3 ai-pulse">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white mr-3 ai-pulse">
                             <i class="fas fa-robot"></i>
                         </div>
                         <div>
@@ -202,9 +202,9 @@
                     
                     <div class="flex gap-2">
                         <input type="text" id="ai-input" placeholder="Ask about verses, meanings, or Islamic concepts..." 
-                               class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-500"
+                               class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
                                onkeypress="handleAIKeyPress(event)">
-                        <button onclick="sendAIMessage()" class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                        <button onclick="sendAIMessage()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
@@ -212,19 +212,19 @@
                 
                 <!-- Quick Actions -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button onclick="quickAction('meaning')" class="bg-purple-100 text-purple-700 p-4 rounded-lg hover:bg-purple-200 transition">
+                    <button onclick="quickAction('meaning')" class="bg-green-100 text-green-700 p-4 rounded-lg hover:bg-green-200 transition">
                         <i class="fas fa-book-open text-2xl mb-2"></i>
                         <p class="text-sm">Verse Meaning</p>
                     </button>
-                    <button onclick="quickAction('context')" class="bg-indigo-100 text-indigo-700 p-4 rounded-lg hover:bg-indigo-200 transition">
+                    <button onclick="quickAction('context')" class="bg-emerald-100 text-emerald-700 p-4 rounded-lg hover:bg-emerald-200 transition">
                         <i class="fas fa-history text-2xl mb-2"></i>
                         <p class="text-sm">Historical Context</p>
                     </button>
-                    <button onclick="quickAction('lessons')" class="bg-green-100 text-green-700 p-4 rounded-lg hover:bg-green-200 transition">
+                    <button onclick="quickAction('lessons')" class="bg-lime-100 text-lime-700 p-4 rounded-lg hover:bg-lime-200 transition">
                         <i class="fas fa-lightbulb text-2xl mb-2"></i>
                         <p class="text-sm">Life Lessons</p>
                     </button>
-                    <button onclick="quickAction('tafsir')" class="bg-blue-100 text-blue-700 p-4 rounded-lg hover:bg-blue-200 transition">
+                    <button onclick="quickAction('tafsir')" class="bg-teal-100 text-teal-700 p-4 rounded-lg hover:bg-teal-200 transition">
                         <i class="fas fa-comments text-2xl mb-2"></i>
                         <p class="text-sm">Tafsir</p>
                     </button>
@@ -242,17 +242,17 @@
                 <div class="bg-white rounded-lg shadow-lg p-6">
                     <div class="relative">
                         <input type="text" id="search-input" placeholder="Search by verse, keyword, or topic..." 
-                               class="w-full px-6 py-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 text-lg"
+                               class="w-full px-6 py-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 text-lg"
                                oninput="performSearch(this.value)">
                         <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                     </div>
                     
                     <div class="mt-4 flex flex-wrap gap-2">
                         <span class="text-sm text-gray-600">Popular searches:</span>
-                        <button onclick="searchPopular('mercy')" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200">Mercy</button>
-                        <button onclick="searchPopular('patience')" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200">Patience</button>
-                        <button onclick="searchPopular('prayer')" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200">Prayer</button>
-                        <button onclick="searchPopular('paradise')" class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200">Paradise</button>
+                        <button onclick="searchPopular('mercy')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Mercy</button>
+                        <button onclick="searchPopular('patience')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Patience</button>
+                        <button onclick="searchPopular('prayer')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Prayer</button>
+                        <button onclick="searchPopular('paradise')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Paradise</button>
                     </div>
                 </div>
                 
@@ -270,24 +270,24 @@
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-brain text-3xl text-purple-600"></i>
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-3xl text-green-600"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">AI-Powered Insights</h3>
                     <p class="text-gray-600">Get intelligent explanations and context for every verse</p>
                 </div>
                 
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-language text-3xl text-green-600"></i>
+                    <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-language text-3xl text-emerald-600"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Multiple Translations</h3>
                     <p class="text-gray-600">Access translations in multiple languages for better understanding</p>
                 </div>
                 
                 <div class="text-center">
-                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-headphones text-3xl text-blue-600"></i>
+                    <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headphones text-3xl text-teal-600"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Audio Recitation</h3>
                     <p class="text-gray-600">Listen to beautiful recitations from renowned Qaris</p>
@@ -416,11 +416,11 @@
             const verses = quranData.verses[surahId] || [];
             verses.forEach((verse, index) => {
                 const verseDiv = document.createElement('div');
-                verseDiv.className = 'p-4 rounded-lg border border-gray-200 hover:border-purple-300 transition cursor-pointer verse-hover';
+                verseDiv.className = 'p-4 rounded-lg border border-gray-200 hover:border-green-300 transition cursor-pointer verse-hover';
                 verseDiv.innerHTML = `
                     <div class="flex justify-between items-start mb-2">
                         <span class="text-sm text-gray-500">${index + 1}</span>
-                        <button onclick="bookmarkVerse(${surahId}, ${index + 1})" class="text-gray-400 hover:text-purple-600">
+                        <button onclick="bookmarkVerse(${surahId}, ${index + 1})" class="text-gray-400 hover:text-green-600">
                             <i class="far fa-bookmark"></i>
                         </button>
                     </div>
@@ -468,7 +468,7 @@
             
             // Add user message
             const userMessage = document.createElement('div');
-            userMessage.className = 'bg-purple-100 text-purple-800 rounded-lg p-4 shadow ml-12';
+            userMessage.className = 'bg-green-100 text-green-800 rounded-lg p-4 shadow ml-12';
             userMessage.innerHTML = `<p>${message}</p>`;
             chatMessages.appendChild(userMessage);
             
@@ -481,7 +481,7 @@
                 aiMessage.className = 'bg-white rounded-lg p-4 shadow mr-12';
                 aiMessage.innerHTML = `
                     <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white mr-3 flex-shrink-0">
+                        <div class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white mr-3 flex-shrink-0">
                             <i class="fas fa-robot text-sm"></i>
                         </div>
                         <div>
@@ -543,12 +543,12 @@
             setTimeout(() => {
                 results.innerHTML = `
                     <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
-                        <p class="font-semibold text-purple-600">Surah Al-Fatihah:1</p>
+                        <p class="font-semibold text-green-600">Surah Al-Fatihah:1</p>
                         <p class="arabic-text text-lg my-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
                         <p class="text-gray-700">In the name of Allah, the Entirely Merciful, the Especially Merciful.</p>
                     </div>
                     <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
-                        <p class="font-semibold text-purple-600">Surah Al-Baqarah:163</p>
+                        <p class="font-semibold text-green-600">Surah Al-Baqarah:163</p>
                         <p class="arabic-text text-lg my-2">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ ۖ لَا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ</p>
                         <p class="text-gray-700">And your god is one God. There is no deity worthy of worship except Him, the Entirely Merciful, the Especially Merciful.</p>
                     </div>
