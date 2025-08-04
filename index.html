@@ -4,599 +4,397 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AiQuran - AI-Powered Quran Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri+Quran:wght@400;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .arabic-text {
-            font-family: 'Amiri Quran', serif;
-            direction: rtl;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .scroll-smooth {
-            scroll-behavior: smooth;
-        }
-        
-        .verse-hover:hover {
-            background-color: rgba(16, 185, 129, 0.1);
-            transform: translateX(4px);
-            transition: all 0.3s ease;
-        }
-        
-        .ai-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: .5;
-            }
-        }
-        
-        .dark-mode {
-            background-color: #1a202c;
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .bg-white {
-            background-color: #2d3748;
-        }
-        
-        .dark-mode .text-gray-800 {
-            color: #e2e8f0;
-        }
-        
-        .dark-mode .text-gray-600 {
-            color: #cbd5e0;
-        }
-        
-        .dark-mode .border-gray-200 {
-            border-color: #4a5568;
-        }
-        
-        .dark-mode .hover\:bg-gray-50:hover {
-            background-color: #374151;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri+Quran:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="scroll-smooth">
+<body>
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-book-quran text-3xl text-green-600"></i>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">AiQuran</span>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-green-600 transition">Home</a>
-                    <a href="#quran-reader" class="nav-link text-gray-700 hover:text-green-600 transition">Quran Reader</a>
-                    <a href="#ai-assistant" class="nav-link text-gray-700 hover:text-green-600 transition">AI Assistant</a>
-                    <a href="#search" class="nav-link text-gray-700 hover:text-green-600 transition">Search</a>
-                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 transition">
-                        <i class="fas fa-moon text-gray-700" id="theme-icon"></i>
-                    </button>
-                </div>
-                
-                <button class="md:hidden" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-2xl text-gray-700"></i>
-                </button>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <i class="fas fa-book-quran"></i>
+                <span>AiQuran</span>
             </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-4 py-2 space-y-2">
-                <a href="#home" class="block py-2 text-gray-700 hover:text-green-600">Home</a>
-                <a href="#quran-reader" class="block py-2 text-gray-700 hover:text-green-600">Quran Reader</a>
-                <a href="#ai-assistant" class="block py-2 text-gray-700 hover:text-green-600">AI Assistant</a>
-                <a href="#search" class="block py-2 text-gray-700 hover:text-green-600">Search</a>
+            <ul class="navbar-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#quran">Quran</a></li>
+                <li><a href="#recitation">Recitation</a></li>
+                <li><a href="#tafsir">Tafsir</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#plans">Plans</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+                <button id="user-menu"><i class="fas fa-user"></i></button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-green-900 opacity-20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-                    Experience Quran with AI
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 opacity-90">
-                    Discover the divine wisdom with intelligent search, translations, and AI-powered insights
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="scrollToSection('quran-reader')" class="bg-white text-green-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
-                        Start Reading
-                    </button>
-                    <button onclick="scrollToSection('ai-assistant')" class="glass-effect text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:bg-opacity-20 transition transform hover:scale-105">
-                        Ask AI Assistant
-                    </button>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Experience Quran with AI</h1>
+                <p>Discover divine wisdom with intelligent search, translations, and AI-powered insights</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Start Reading</button>
+                    <button class="btn-secondary">Try AI Recitation</button>
                 </div>
             </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-3xl"></i>
+            <div class="hero-demo">
+                <div class="demo-card">
+                    <h3>Try AI Recitation Coach</h3>
+                    <div class="demo-interface">
+                        <button id="demo-record" class="record-btn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <div class="demo-feedback">
+                            <div class="feedback-placeholder">Click to start recording</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Quran Reader Section -->
-    <section id="quran-reader" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Quran Reader</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Surah List -->
-                <div class="bg-white rounded-lg shadow-lg p-6 max-h-[600px] overflow-y-auto">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Surah List</h3>
-                    <div id="surah-list" class="space-y-2">
-                        <!-- Surah items will be populated by JavaScript -->
-                    </div>
+    <section id="quran" class="quran-reader">
+        <div class="container">
+            <div class="quran-controls">
+                <div class="script-selector">
+                    <label>Script:</label>
+                    <select id="script-select">
+                        <option value="uthmani">Uthmani</option>
+                        <option value="indopak">Indo-Pak</option>
+                        <option value="simple">Simple</option>
+                    </select>
                 </div>
-                
-                <!-- Quran Content -->
-                <div class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-semibold text-gray-800" id="surah-title">Al-Fatihah</h3>
-                        <div class="flex gap-2">
-                            <button onclick="toggleTranslation()" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition">
-                                <i class="fas fa-language mr-2"></i>Translation
-                            </button>
-                            <button onclick="playAudio()" class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition">
-                                <i class="fas fa-play mr-2"></i>Play
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div id="quran-content" class="space-y-4">
-                        <!-- Quran verses will be populated by JavaScript -->
-                    </div>
+                <div class="translation-selector">
+                    <label>Translation:</label>
+                    <select id="translation-select">
+                        <option value="sahih">Sahih International</option>
+                        <option value="pickthall">Pickthall</option>
+                        <option value="yusuf">Yusuf Ali</option>
+                    </select>
+                </div>
+                <div class="reciter-selector">
+                    <label>Reciter:</label>
+                    <select id="reciter-select">
+                        <option value="mishari">Mishary Rashid</option>
+                        <option value="sudais">Abdul Rahman Al-Sudais</option>
+                        <option value="hudhaify">Ali Al-Hudhaify</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button id="toggle-tajweed" class="option-btn">
+                        <i class="fas fa-palette"></i> Tajweed
+                    </button>
+                    <button id="toggle-translation" class="option-btn">
+                        <i class="fas fa-language"></i> Translation
+                    </button>
+                    <button id="toggle-transliteration" class="option-btn">
+                        <i class="fas fa-font"></i> Transliteration
+                    </button>
+                </div>
+            </div>
+
+            <div class="quran-navigation">
+                <div class="surah-selector">
+                    <select id="surah-select">
+                        <!-- Populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="juz-selector">
+                    <select id="juz-select">
+                        <!-- Populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="page-navigation">
+                    <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                    <span id="page-info">Page 1</span>
+                    <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="ayah-jump">
+                    <input type="number" id="ayah-input" placeholder="Ayah #">
+                    <button id="jump-ayah">Go</button>
+                </div>
+            </div>
+
+            <div class="quran-content">
+                <div id="quran-display">
+                    <!-- Quran content will be loaded here -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- AI Assistant Section -->
-    <section id="ai-assistant" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">AI Quran Assistant</h2>
-            
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gray-50 rounded-lg shadow-lg p-6 mb-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white mr-3 ai-pulse">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">Quran AI Assistant</h3>
-                            <p class="text-sm text-gray-600">Ask anything about the Quran</p>
-                        </div>
+    <!-- AI Recitation Section -->
+    <section id="recitation" class="ai-recitation">
+        <div class="container">
+            <h2>AI Recitation Coach</h2>
+            <div class="recitation-workspace">
+                <div class="recitation-panel">
+                    <div class="verse-display">
+                        <!-- Current verse for recitation -->
                     </div>
-                    
-                    <div id="chat-messages" class="h-96 overflow-y-auto mb-4 space-y-4">
-                        <div class="bg-white rounded-lg p-4 shadow">
-                            <p class="text-gray-700">As-salamu alaykum! I'm your AI Quran assistant. How can I help you understand the Quran today?</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex gap-2">
-                        <input type="text" id="ai-input" placeholder="Ask about verses, meanings, or Islamic concepts..." 
-                               class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
-                               onkeypress="handleAIKeyPress(event)">
-                        <button onclick="sendAIMessage()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-                            <i class="fas fa-paper-plane"></i>
+                    <div class="recitation-controls">
+                        <button id="start-recording" class="record-btn">
+                            <i class="fas fa-microphone"></i> Start Recording
+                        </button>
+                        <button id="stop-recording" class="record-btn hidden">
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <button id="play-verse" class="play-btn">
+                            <i class="fas fa-play"></i> Play Verse
                         </button>
                     </div>
+                    <div class="recitation-feedback">
+                        <div class="feedback-overview">
+                            <div class="feedback-score">
+                                <span>Accuracy</span>
+                                <div class="score-value">--</div>
+                            </div>
+                            <div class="feedback-score">
+                                <span>Fluency</span>
+                                <div class="score-value">--</div>
+                            </div>
+                            <div class="feedback-score">
+                                <span>Tajweed</span>
+                                <div class="score-value">--</div>
+                            </div>
+                        </div>
+                        <div class="feedback-details">
+                            <h3>Detailed Feedback</h3>
+                            <div class="feedback-list">
+                                <!-- Detailed feedback will appear here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Quick Actions -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button onclick="quickAction('meaning')" class="bg-green-100 text-green-700 p-4 rounded-lg hover:bg-green-200 transition">
-                        <i class="fas fa-book-open text-2xl mb-2"></i>
-                        <p class="text-sm">Verse Meaning</p>
-                    </button>
-                    <button onclick="quickAction('context')" class="bg-emerald-100 text-emerald-700 p-4 rounded-lg hover:bg-emerald-200 transition">
-                        <i class="fas fa-history text-2xl mb-2"></i>
-                        <p class="text-sm">Historical Context</p>
-                    </button>
-                    <button onclick="quickAction('lessons')" class="bg-lime-100 text-lime-700 p-4 rounded-lg hover:bg-lime-200 transition">
-                        <i class="fas fa-lightbulb text-2xl mb-2"></i>
-                        <p class="text-sm">Life Lessons</p>
-                    </button>
-                    <button onclick="quickAction('tafsir')" class="bg-teal-100 text-teal-700 p-4 rounded-lg hover:bg-teal-200 transition">
-                        <i class="fas fa-comments text-2xl mb-2"></i>
-                        <p class="text-sm">Tafsir</p>
-                    </button>
+                <div class="recitation-history">
+                    <h3>Practice History</h3>
+                    <div class="history-list">
+                        <!-- Practice sessions will appear here -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Search Section -->
-    <section id="search" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Search Quran</h2>
-            
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <div class="relative">
-                        <input type="text" id="search-input" placeholder="Search by verse, keyword, or topic..." 
-                               class="w-full px-6 py-4 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 text-lg"
-                               oninput="performSearch(this.value)">
-                        <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+    <!-- Tafsir Section -->
+    <section id="tafsir" class="tafsir-section">
+        <div class="container">
+            <h2>Deep Tafsir Engine</h2>
+            <div class="tafsir-workspace">
+                <div class="tafsir-controls">
+                    <div class="verse-selector">
+                        <select id="tafsir-surah-select">
+                            <!-- Populated by JavaScript -->
+                        </select>
+                        <input type="number" id="tafsir-ayah-input" placeholder="Ayah #">
+                        <button id="load-tafsir">Load Tafsir</button>
                     </div>
-                    
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="text-sm text-gray-600">Popular searches:</span>
-                        <button onclick="searchPopular('mercy')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Mercy</button>
-                        <button onclick="searchPopular('patience')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Patience</button>
-                        <button onclick="searchPopular('prayer')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Prayer</button>
-                        <button onclick="searchPopular('paradise')" class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200">Paradise</button>
+                    <div class="tafsir-sources">
+                        <label>Sources:</label>
+                        <div class="source-options">
+                            <label><input type="checkbox" value="ibn-kathir" checked> Ibn Kathir</label>
+                            <label><input type="checkbox" value="tabari" checked> Al-Tabari</label>
+                            <label><input type="checkbox" value="qurtubi"> Al-Qurtubi</label>
+                            <label><input type="checkbox" value="jalalayn"> Jalalayn</label>
+                        </div>
                     </div>
                 </div>
-                
-                <div id="search-results" class="mt-8 space-y-4">
-                    <!-- Search results will appear here -->
+                <div class="tafsir-content">
+                    <div class="tafsir-verse">
+                        <!-- Selected verse will appear here -->
+                    </div>
+                    <div class="tafsir-tabs">
+                        <button class="tab-btn active" data-tab="summary">AI Summary</button>
+                        <button class="tab-btn" data-tab="sources">Classical Sources</button>
+                        <button class="tab-btn" data-tab="themes">Thematic Analysis</button>
+                        <button class="tab-btn" data-tab="cross-ref">Cross References</button>
+                    </div>
+                    <div class="tafsir-tab-content">
+                        <div id="summary-tab" class="tab-pane active">
+                            <!-- AI-generated summary -->
+                        </div>
+                        <div id="sources-tab" class="tab-pane">
+                            <!-- Classical tafsir sources -->
+                        </div>
+                        <div id="themes-tab" class="tab-pane">
+                            <!-- Thematic analysis -->
+                        </div>
+                        <div id="cross-ref-tab" class="tab-pane">
+                            <!-- Cross references -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Features</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-brain text-3xl text-green-600"></i>
+    <!-- Arabic Tools Section -->
+    <section id="tools" class="arabic-tools">
+        <div class="container">
+            <h2>Arabic Mastery Tools</h2>
+            <div class="tools-workspace">
+                <div class="word-analysis">
+                    <h3>Root Word Analysis</h3>
+                    <div class="word-input">
+                        <input type="text" id="arabic-word-input" placeholder="Enter Arabic word">
+                        <button id="analyze-word">Analyze</button>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">AI-Powered Insights</h3>
-                    <p class="text-gray-600">Get intelligent explanations and context for every verse</p>
+                    <div class="word-result">
+                        <!-- Analysis results will appear here -->
+                    </div>
                 </div>
-                
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-language text-3xl text-emerald-600"></i>
+                <div class="grammar-coach">
+                    <h3>Grammar Coach</h3>
+                    <div class="grammar-example">
+                        <!-- Example sentence with grammar breakdown -->
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Multiple Translations</h3>
-                    <p class="text-gray-600">Access translations in multiple languages for better understanding</p>
+                    <div class="grammar-explanation">
+                        <!-- Grammar explanations -->
+                    </div>
                 </div>
-                
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-headphones text-3xl text-teal-600"></i>
+                <div class="vocabulary-builder">
+                    <h3>Vocabulary Builder</h3>
+                    <div class="flashcard">
+                        <!-- Flashcard interface -->
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Audio Recitation</h3>
-                    <p class="text-gray-600">Listen to beautiful recitations from renowned Qaris</p>
+                    <div class="flashcard-controls">
+                        <button id="prev-card">Previous</button>
+                        <button id="flip-card">Flip</button>
+                        <button id="next-card">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Plans Section -->
+    <section id="plans" class="reading-plans">
+        <div class="container">
+            <h2>Personalized Learning Paths</h2>
+            <div class="plans-options">
+                <div class="plan-card">
+                    <h3>30-Day Khatm</h3>
+                    <p>Complete the Quran in 30 days with daily targets</p>
+                    <button class="btn-primary">Start Plan</button>
+                </div>
+                <div class="plan-card">
+                    <h3>Hifz Tracker</h3>
+                    <p>Track your memorization progress with spaced repetition</p>
+                    <button class="btn-primary">Start Plan</button>
+                </div>
+                <div class="plan-card">
+                    <h3>Tajweed Mastery</h3>
+                    <p>Perfect your pronunciation with progressive difficulty levels</p>
+                    <button class="btn-primary">Start Plan</button>
+                </div>
+            </div>
+            <div class="progress-dashboard">
+                <h3>Your Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <span>Current Streak</span>
+                        <div class="stat-value">7 days</div>
+                    </div>
+                    <div class="stat-card">
+                        <span>Ayahs Memorized</span>
+                        <div class="stat-value">142</div>
+                    </div>
+                    <div class="stat-card">
+                        <span>Recitation Score</span>
+                        <div class="stat-value">87%</div>
+                    </div>
+                </div>
+                <div class="progress-chart">
+                    <!-- Progress chart visualization -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-book-quran text-2xl"></i>
-                        <span class="text-xl font-bold">AiQuran</span>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-book-quran"></i>
+                    <span>AiQuran</span>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Mobile Apps</a></li>
+                            <li><a href="#">Institutions</a></li>
+                        </ul>
                     </div>
-                    <p class="text-gray-400">Bringing the Quran to life with artificial intelligence</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">About</a></li>
-                        <li><a href="#" class="hover:text-white transition">Features</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Resources</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Tafsir</a></li>
-                        <li><a href="#" class="hover:text-white transition">Hadith</a></li>
-                        <li><a href="#" class="hover:text-white transition">Learn Arabic</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Tutorials</a></li>
+                            <li><a href="#">Webinars</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
                     </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for updates</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <div class="footer-bottom">
                 <p>&copy; 2024 AiQuran. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="js/quran-data.js"></script>
+    <script src="js/tafsir-data.js"></script>
+    <script src="js/arabic-tools.js"></script>
+    <script src="js/ai-recitation.js"></script>
+    <script src="js/search-engine.js"></script>
+    <script src="js/app.js"></script>
     <script>
-        // Sample Quran data
-        const quranData = {
-            surahs: [
-                { id: 1, name: "Al-Fatihah", arabicName: "الفاتحة", verses: 7 },
-                { id: 2, name: "Al-Baqarah", arabicName: "البقرة", verses: 286 },
-                { id: 3, name: "Ali 'Imran", arabicName: "آل عمران", verses: 200 },
-                { id: 4, name: "An-Nisa'", arabicName: "النساء", verses: 176 },
-                { id: 5, name: "Al-Ma'idah", arabicName: "المائدة", verses: 120 }
-            ],
-            verses: {
-                1: [
-                    { arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", translation: "In the name of Allah, the Entirely Merciful, the Especially Merciful." },
-                    { arabic: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", translation: "All praise is for Allah—Lord of all worlds," },
-                    { arabic: "الرَّحْمَٰنِ الرَّحِيمِ", translation: "the Entirely Merciful, the Especially Merciful," },
-                    { arabic: "مَالِكِ يَوْمِ الدِّينِ", translation: "Master of the Day of Judgment." },
-                    { arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", translation: "You alone we worship and You alone we ask for help." },
-                    { arabic: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", translation: "Guide us to the Straight Path," },
-                    { arabic: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", translation: "the path of those You have blessed—not those You are displeased with, or those who are astray." }
-                ]
-            }
-        };
-
-        let currentSurah = 1;
-        let showTranslation = false;
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            loadSurahList();
-            loadSurah(1);
-            setupScrollEffects();
-        });
-
-        // Load surah list
-        function loadSurahList() {
-            const surahList = document.getElementById('surah-list');
-            quranData.surahs.forEach(surah => {
-                const surahItem = document.createElement('div');
-                surahItem.className = 'p-3 rounded-lg hover:bg-gray-100 cursor-pointer transition verse-hover';
-                surahItem.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="font-semibold">${surah.name}</p>
-                            <p class="text-sm text-gray-600">${surah.verses} verses</p>
-                        </div>
-                        <p class="arabic-text text-lg">${surah.arabicName}</p>
-                    </div>
-                `;
-                surahItem.onclick = () => loadSurah(surah.id);
-                surahList.appendChild(surahItem);
+        // Register service worker for offline mode
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
             });
         }
-
-        // Load surah content
-        function loadSurah(surahId) {
-            currentSurah = surahId;
-            const surah = quranData.surahs.find(s => s.id === surahId);
-            document.getElementById('surah-title').textContent = surah.name;
-            
-            const contentDiv = document.getElementById('quran-content');
-            contentDiv.innerHTML = '';
-            
-            const verses = quranData.verses[surahId] || [];
-            verses.forEach((verse, index) => {
-                const verseDiv = document.createElement('div');
-                verseDiv.className = 'p-4 rounded-lg border border-gray-200 hover:border-green-300 transition cursor-pointer verse-hover';
-                verseDiv.innerHTML = `
-                    <div class="flex justify-between items-start mb-2">
-                        <span class="text-sm text-gray-500">${index + 1}</span>
-                        <button onclick="bookmarkVerse(${surahId}, ${index + 1})" class="text-gray-400 hover:text-green-600">
-                            <i class="far fa-bookmark"></i>
-                        </button>
-                    </div>
-                    <p class="arabic-text text-2xl mb-2 leading-relaxed">${verse.arabic}</p>
-                    ${showTranslation ? `<p class="text-gray-700">${verse.translation}</p>` : ''}
-                `;
-                contentDiv.appendChild(verseDiv);
-            });
-            
-            // Scroll to top of content
-            contentDiv.scrollTop = 0;
-        }
-
-        // Toggle translation
-        function toggleTranslation() {
-            showTranslation = !showTranslation;
-            loadSurah(currentSurah);
-        }
-
-        // Play audio (placeholder)
-        function playAudio() {
-            alert('Audio playback feature would be implemented here with actual recitation files.');
-        }
-
-        // Bookmark verse
-        function bookmarkVerse(surahId, verseNumber) {
-            // In a real app, this would save to local storage or backend
-            const message = document.createElement('div');
-            message.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-            message.textContent = 'Verse bookmarked!';
-            document.body.appendChild(message);
-            
-            setTimeout(() => {
-                message.remove();
-            }, 3000);
-        }
-
-        // AI Assistant functions
-        function sendAIMessage() {
-            const input = document.getElementById('ai-input');
-            const message = input.value.trim();
-            if (!message) return;
-            
-            const chatMessages = document.getElementById('chat-messages');
-            
-            // Add user message
-            const userMessage = document.createElement('div');
-            userMessage.className = 'bg-green-100 text-green-800 rounded-lg p-4 shadow ml-12';
-            userMessage.innerHTML = `<p>${message}</p>`;
-            chatMessages.appendChild(userMessage);
-            
-            // Clear input
-            input.value = '';
-            
-            // Simulate AI response
-            setTimeout(() => {
-                const aiMessage = document.createElement('div');
-                aiMessage.className = 'bg-white rounded-lg p-4 shadow mr-12';
-                aiMessage.innerHTML = `
-                    <div class="flex items-start">
-                        <div class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white mr-3 flex-shrink-0">
-                            <i class="fas fa-robot text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-gray-700">${generateAIResponse(message)}</p>
-                        </div>
-                    </div>
-                `;
-                chatMessages.appendChild(aiMessage);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
-        }
-
-        function handleAIKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendAIMessage();
-            }
-        }
-
-        function generateAIResponse(message) {
-            const responses = {
-                'mercy': 'The Quran mentions Allah\'s mercy (Rahmah) over 300 times. One of the most beautiful verses is in Surah Ar-Rahman: "So which of the favors of your Lord would you deny?" (55:13)',
-                'patience': 'Patience (Sabr) is highly praised in the Quran. Allah says in Surah Al-Baqarah: "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient." (2:153)',
-                'prayer': 'Prayer (Salah) is the second pillar of Islam. The Quran emphasizes its importance: "Indeed, prayer prohibits immorality and wrongdoing." (29:45)',
-                'paradise': 'Paradise (Jannah) is described beautifully in the Quran. Surah Ar-Rahman gives a vivid description: "But for he who has feared the position of his Lord are two gardens." (55:46)'
-            };
-            
-            for (let key in responses) {
-                if (message.toLowerCase().includes(key)) {
-                    return responses[key];
-                }
-            }
-            
-            return 'That\'s an interesting question about the Quran. The Quran contains deep wisdom and guidance for all aspects of life. Would you like me to elaborate on a specific aspect or verse related to your question?';
-        }
-
-        function quickAction(type) {
-            const questions = {
-                'meaning': 'What is the meaning of Surah Al-Ikhlas?',
-                'context': 'What was the historical context of Surah Al-Fil?',
-                'lessons': 'What life lessons can we learn from the story of Prophet Yusuf?',
-                'tafsir': 'Can you explain the tafsir of Ayat al-Kursi?'
-            };
-            
-            document.getElementById('ai-input').value = questions[type];
-            sendAIMessage();
-        }
-
-        // Search functions
-        function performSearch(query) {
-            if (query.length < 2) {
-                document.getElementById('search-results').innerHTML = '';
-                return;
-            }
-            
-            const results = document.getElementById('search-results');
-            results.innerHTML = '<p class="text-gray-600">Searching...</p>';
-            
-            // Simulate search
-            setTimeout(() => {
-                results.innerHTML = `
-                    <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
-                        <p class="font-semibold text-green-600">Surah Al-Fatihah:1</p>
-                        <p class="arabic-text text-lg my-2">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-                        <p class="text-gray-700">In the name of Allah, the Entirely Merciful, the Especially Merciful.</p>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
-                        <p class="font-semibold text-green-600">Surah Al-Baqarah:163</p>
-                        <p class="arabic-text text-lg my-2">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ ۖ لَا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ</p>
-                        <p class="text-gray-700">And your god is one God. There is no deity worthy of worship except Him, the Entirely Merciful, the Especially Merciful.</p>
-                    </div>
-                `;
-            }, 500);
-        }
-
-        function searchPopular(term) {
-            document.getElementById('search-input').value = term;
-            performSearch(term);
-        }
-
-        // Utility functions
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const icon = document.getElementById('theme-icon');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
-        }
-
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function setupScrollEffects() {
-            window.addEventListener('scroll', function() {
-                const navbar = document.getElementById('navbar');
-                if (window.scrollY > 100) {
-                    navbar.classList.add('shadow-xl');
-                } else {
-                    navbar.classList.remove('shadow-xl');
-                }
-            });
-        }
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                scrollToSection(targetId);
-            });
-        });
     </script>
 </body>
 </html>

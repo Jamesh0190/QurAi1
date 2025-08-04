@@ -1,0 +1,1073 @@
+:root {
+    --primary-color: #10b981;
+    --primary-dark: #059669;
+    --secondary-color: #047857;
+    --accent-color: #34d399;
+    --light-color: #f0fdf4;
+    --dark-color: #064e3b;
+    --text-color: #1f2937;
+    --light-text: #6b7280;
+    --border-color: #d1fae5;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+.arabic-text {
+    font-family: 'Amiri Quran', serif;
+    direction: rtl;
+    text-align: right;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--light-color);
+}
+
+/* Navigation */
+.navbar {
+    background-color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.navbar-brand i {
+    margin-right: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-nav li {
+    margin-left: 1.5rem;
+}
+
+.navbar-nav a {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.navbar-nav a:hover {
+    color: var(--primary-color);
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-actions button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.navbar-actions button:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 5rem 0;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-demo {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.demo-card h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.demo-interface {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.record-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.record-btn:hover {
+    background-color: var(--light-color);
+}
+
+.demo-feedback {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quran Reader Section */
+.quran-reader {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+.quran-controls {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.quran-controls > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quran-controls select {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--border-color);
+    background-color: white;
+}
+
+.view-options {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.option-btn {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    background-color: var(--light-color);
+}
+
+.option-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.quran-navigation {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.quran-navigation > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quran-navigation select, .quran-navigation input {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid var(--border-color);
+}
+
+.page-navigation {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page-navigation button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.quran-content {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.verse-container {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.verse-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.verse-number {
+    background-color: var(--primary-color);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.verse-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.verse-actions button {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.verse-actions button:hover {
+    color: var(--primary-color);
+}
+
+.verse-text {
+    font-size: 1.75rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.verse-translation {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.verse-transliteration {
+    color: var(--light-text);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+/* Tajweed Color Coding */
+.tajweed-ghunnah {
+    color: #ff0000;
+}
+
+.tajweed-ikhfa {
+    color: #0000ff;
+}
+
+.tajweed-iqlab {
+    color: #ff00ff;
+}
+
+.tajweed-idgham {
+    color: #008000;
+}
+
+/* AI Recitation Section */
+.ai-recitation {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.ai-recitation h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.recitation-workspace {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.recitation-panel {
+    background-color: var(--light-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.verse-display {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.recitation-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.record-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.record-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.play-btn {
+    background-color: var(--accent-color);
+}
+
+.recitation-feedback {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.feedback-overview {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.feedback-score {
+    text-align: center;
+}
+
+.feedback-score span {
+    display: block;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.feedback-details h3 {
+    margin-bottom: 1rem;
+}
+
+.feedback-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.feedback-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.feedback-icon {
+    color: var(--primary-color);
+    margin-top: 0.25rem;
+}
+
+.recitation-history {
+    background-color: var(--light-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.recitation-history h3 {
+    margin-bottom: 1.5rem;
+}
+
+.history-item {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-date {
+    color: var(--light-text);
+    font-size: 0.875rem;
+}
+
+.history-score {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Tafsir Section */
+.tafsir-section {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+.tafsir-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tafsir-workspace {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.tafsir-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.verse-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tafsir-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.source-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tafsir-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tafsir-verse {
+    background-color: var(--light-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.tafsir-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--light-text);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Arabic Tools Section */
+.arabic-tools {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.arabic-tools h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tools-workspace {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.word-analysis, .grammar-coach, .vocabulary-builder {
+    background-color: var(--light-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.word-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.word-input input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+}
+
+.word-result {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.grammar-example {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.grammar-explanation {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.flashcard {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.flashcard-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Reading Plans Section */
+.reading-plans {
+    padding: 4rem 0;
+    background-color: var(--light-color);
+}
+
+.reading-plans h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.plans-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.plan-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.plan-card h3 {
+    margin-bottom: 1rem;
+}
+
+.plan-card p {
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+}
+
+.progress-dashboard {
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.progress-dashboard h3 {
+    margin-bottom: 2rem;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--light-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.stat-card span {
+    display: block;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.progress-chart {
+    height: 200px;
+    background-color: var(--light-color);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-logo i {
+    margin-right: 0.5rem;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.footer-column h4 {
+    color: white;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 2rem;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column a {
+    color: #d1d5db;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--primary-color);
+}
+
+.footer-subscribe h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-subscribe p {
+    margin-bottom: 1.5rem;
+    color: #d1d5db;
+}
+
+.subscribe-form {
+    display: flex;
+}
+
+.subscribe-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.subscribe-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 0.375rem 0.375rem 0;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+    background-color: var(--primary-dark);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #d1d5db;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .recitation-workspace {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+    
+    .quran-controls, .quran-navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .view-options, .page-navigation {
+        margin-left: 0;
+    }
+    
+    .feedback-overview {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1f2937;
+    color: #f3f4f6;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .quran-controls,
+body.dark-mode .quran-navigation,
+body.dark-mode .quran-content,
+body.dark-mode .recitation-panel,
+body.dark-mode .recitation-history,
+body.dark-mode .tafsir-workspace,
+body.dark-mode .word-analysis,
+body.dark-mode .grammar-coach,
+body.dark-mode .vocabulary-builder,
+body.dark-mode .plan-card,
+body.dark-mode .progress-dashboard {
+    background-color: #374151;
+}
+
+body.dark-mode .verse-container,
+body.dark-mode .verse-display,
+body.dark-mode .recitation-feedback,
+body.dark-mode .history-item,
+body.dark-mode .word-result,
+body.dark-mode .grammar-example,
+body.dark-mode .grammar-explanation,
+body.dark-mode .flashcard,
+body.dark-mode .stat-card,
+body.dark-mode .progress-chart {
+    background-color: #4b5563;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+    color: #f3f4f6;
+}
+
+body.dark-mode p,
+body.dark-mode .verse-translation,
+body.dark-mode .verse-transliteration,
+body.dark-mode .feedback-item,
+body.dark-mode .history-date {
+    color: #d1d5db;
+}
+
+body.dark-mode .navbar-nav a,
+body.dark-mode .navbar-actions button {
+    color: #f3f4f6;
+}
+
+body.dark-mode .navbar-nav a:hover,
+body.dark-mode .navbar-actions button:hover {
+    color: var(--accent-color);
+}
+
+body.dark-mode .option-btn,
+body.dark-mode .quran-controls select,
+body.dark-mode .quran-navigation select,
+body.dark-mode .quran-navigation input,
+body.dark-mode .word-input input {
+    background-color: #4b5563;
+    border-color: #6b7280;
+    color: #f3f4f6;
+}
+
+body.dark-mode .footer-column a {
+    color: #9ca3af;
+}
+
+body.dark-mode .footer-column a:hover {
+    color: var(--accent-color);
+}
